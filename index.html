@@ -1,135 +1,219 @@
-
 <!DOCTYPE html>
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VOID DIARY ♡ by Adriean</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOID DIARY ♡ Adriean</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#672448,#160813 65%);color:#fff0f8;font-family:Arial,sans-serif;min-height:100vh}
-main{max-width:650px;margin:auto;padding:25px 16px}
-header{text-align:center;padding:25px 0}
-h1{font-size:45px;color:#ffc5e4;text-shadow:0 0 18px #ff1493}
-h2{color:#ffadd8}
-p{color:#e5bad4;line-height:1.8;font-size:14px}
-.card{background:#291326;border:1px solid #ff69b455;border-radius:22px;padding:22px;margin-bottom:20px;box-shadow:0 0 25px #ff149318}
-.center{text-align:center}
-.big{font-size:65px;animation:pulse 2s infinite}
-@keyframes pulse{50%{transform:scale(1.1)}}
-button{border:1px solid #ffadd8;border-radius:30px;padding:12px 20px;background:linear-gradient(100deg,#ff4fa6,#bf277d);color:white;font-size:14px}
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.photo{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:13px;border:1px solid #ff69b4}
-.caption{text-align:center;color:#ffadd8;font-size:12px}
-.hidden{display:none}
-.letter{line-height:2;color:#f8ddeb;white-space:pre-line}
-footer{text-align:center;color:#bd89aa;font-size:11px;padding:25px}
-#hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none}
-.heart{position:absolute;bottom:-30px;color:#ff75ba;animation:float 7s linear forwards}
-@keyframes float{to{transform:translateY(-110vh) rotate(35deg);opacity:0}}
-</style>
-</head>
-<body>
-<div id="hearts"></div>
-<main>
-<header>
-<div style="letter-spacing:4px;color:#ffadd8;font-size:11px">A LITTLE PIECE OF MY HEART</div>
-<h1>VOID DIARY</h1>
-<p>Some memories deserve to stay forever ♡</p>
-</header>
-
-<section class="card center" id="cover">
-<div class="big">💌</div>
-<h2>Welcome to Our Memories</h2>
-<p>Ada kenangan yang sentiasa istimewa.<br>Selamat datang ke ruang kecil penuh cinta ♡</p>
-<button id="open">♡ Buka Diary ♡</button>
-</section>
-
-<div id="diary" class="hidden">
-<section class="card">
-<h2 class="center">♡ Our Memories ♡</h2>
-<p class="center">Dua gambar, dua kenangan.</p>
-<div class="gallery">
-<div>
-<img class="photo" src="photo1.jpg" alt="Kenangan pertama">
-<div class="caption">A lovely memory ♡</div>
-</div>
-<div>
-<img class="photo" src="photo2.jpg" alt="Kenangan kedua">
-<div class="caption">A moment to remember ♡</div>
-</div>
-</div>
-</section>
-
-<section class="card">
-<h2>💗 A Little Letter</h2>
-<div class="letter">haii my fav ex 🤍, awak nak tau takk senanya kan saya rinduu sangatt kt awakk , saya rindu nak dengar suara awak , saya rindu nak gelak sama ii , saya rindu nak luah semua benda kt awak time call , saya rindu update dari awak , saya rindu gambar ii random yg awak selalu sent , saya rinduu semua kenangan kitaa , sumpah saya ckp saya takpernah lupakan sikitt punn kenangan kitaa yg dah berlalu. Saya mintakmaaf sbb gagal buat awak bahagia masa dgn saya , jujur saya ckp saya takpernah lupakan sikit pun pasal awakk , semua yg kita dah jalani sama ii setiap hari saya stalk acc awak , stalk repost awak sbb nak tau kehidupan awak tanpa saya , setiap hari saya tengok gambar ii awak dlam gallery saya , bila saya tengok gambar awak air mata saya takmampu nak tahan , dada saya rasa sesak sgt bila tengok gambar ii awak walaupun saya tau saya takkan dpt hati awak balik. Tipula kan klau saya tak berharap kt awak utk kembali , saya still berharap dkt awak , saya selalu berharap yg awak chat saya balik even sekadar " hai " , sorry klau awak taksuka saya berharap , saya da cuba utk tak berharap , da cuba utk lupakan awak tapii awak selalu terlintas dlam fikiran saya , saya takmampu nak hadap semua tu. Saya tau cinta takbole dipaksa , so saya hanya mampu mendoakan kebahagiaan awak dari jauh jee ..🫠. ♡</div>
-<p style="text-align:right">With love ♡</p>
-</section>
-
-<section class="card center">
-<h2>🎵 Our Little Melody</h2>
-<p>Lagu untuk menemani kenangan ini.</p>
-<audio id="music" src="music.mp3" loop preload="none"></audio>
-<button id="musicBtn">Ⅱ Pause</button>
-<p id="status">♡ Tekan Buka Diary untuk memainkan lagu.</p>
-</section>
-
-<div class="center"><button id="back">♡ Kembali</button></div>
-</div>
-<footer>Made with ♡ by Adriean · VOID DIARY</footer>
-</main>
-
-<script>
-const cover=document.getElementById('cover');
-const diary=document.getElementById('diary');
-const music=document.getElementById('music');
-const statusText=document.getElementById('status');
-let timer=null;
-
-function heart(){
- const h=document.createElement('span');
- h.className='heart';
- h.textContent=['♡','♥','💗','💕'][Math.floor(Math.random()*4)];
- h.style.left=Math.random()*100+'vw';
- h.style.fontSize=(15+Math.random()*20)+'px';
- document.getElementById('hearts').appendChild(h);
- setTimeout(()=>h.remove(),8000);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-document.getElementById('open').onclick=async()=>{
- cover.classList.add('hidden');
- diary.classList.remove('hidden');
- if(!timer)timer=setInterval(heart,500);
- try{
-  await music.play();
-  document.getElementById('musicBtn').textContent='Ⅱ Pause';
-  statusText.textContent='♪ Lagu sedang dimainkan ♡';
- }catch(e){
-  statusText.textContent='Muat naik music.mp3 untuk memainkan lagu.';
- }
- window.scrollTo(0,0);
-};
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffe1ed, #ffb6d1, #fff0f6);
+  color: #8b2450;
+  font-family: Georgia, serif;
+  overflow-x: hidden;
+}
 
-document.getElementById('musicBtn').onclick=async()=>{
- if(music.paused){
-  try{await music.play();statusText.textContent='♪ Lagu sedang dimainkan ♡';document.getElementById('musicBtn').textContent='Ⅱ Pause';}
-  catch(e){statusText.textContent='Fail music.mp3 tidak dijumpai.';}
- }else{
-  music.pause();
-  document.getElementById('musicBtn').textContent='▶ Play';
-  statusText.textContent='Lagu dijeda ♡';
- }
-};
+header {
+  text-align: center;
+  padding: 35px 15px 20px;
+}
 
-document.getElementById('back').onclick=()=>{
- diary.classList.add('hidden');
- cover.classList.remove('hidden');
- music.pause();
- clearInterval(timer);
- timer=null;
- window.scrollTo(0,0);
-};
+header h1 {
+  font-size: 36px;
+  letter-spacing: 3px;
+  text-shadow: 0 3px 12px #ff9fc4;
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 440px;
+  margin: 10px auto 40px;
+  padding: 25px;
+  text-align: center;
+  background: rgba(255,255,255,0.58);
+  border: 1px solid white;
+  border-radius: 25px;
+  box-shadow: 0 12px 35px #d85d8b40;
+  width: 90%;
+}
+
+.photo {
+  width: 100%;
+  max-height: 330px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 4px solid white;
+  box-shadow: 0 5px 20px #e77ba7;
+}
+
+h2 {
+  margin: 22px 0 12px;
+}
+
+p {
+  line-height: 1.8;
+}
+
+button {
+  margin-top: 22px;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff75aa, #e83e83);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #d84e8b50;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+#diary {
+  display: none;
+  text-align: left;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 18px;
+  background: #fff5f9;
+  border: 1px solid #ffc2d8;
+}
+
+#diary h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  color: #ff4f93;
+  animation: floatUp 7s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% { opacity: 0.8; }
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>♡ VOID DIARY ♡</h1>
+  <p>A little place for memories · by Adriean</p>
+</header>
+
+<main class="container">
+
+  <!-- TUKAR gambar.jpg KEPADA NAMA FAIL GAMBAR KAU -->
+  <img class="photo"
+       src="./gambar.jpg"
+       alt="Our special memory"
+       onerror="this.style.display='none'">
+
+  <h2>Dear You ♡</h2>
+
+  <p>
+    Ada cerita yang susah nak diluahkan,
+    jadi aku simpan semuanya dalam diary ini.
+    Setiap kenangan ada maknanya tersendiri. 💗
+  </p>
+
+  <button id="openButton" onclick="bukaDiary()">
+    ♡ Buka Diary ♡
+  </button>
+
+  <section id="diary">
+    <h2>My Little Diary 💌</h2>
+
+    <p>
+      Hai, awak. Kalau awak sedang membaca ini,
+      terima kasih sebab sudi singgah di ruang kecil ini.
+      <br><br>
+      Kadang-kadang kenangan yang sederhana pun
+      boleh menjadi sesuatu yang sangat bermakna.
+      Aku harap setiap kali awak datang ke sini,
+      awak akan tersenyum walaupun sedikit. ♡
+      <br><br>
+      — Adriean 💗
+    </p>
+
+    <button onclick="tutupDiary()">Tutup Diary</button>
+  </section>
+
+  <!-- TUKAR lagu.mp3 KEPADA NAMA FAIL LAGU KAU -->
+  <audio id="mySong" src="./lagu.mp3" loop preload="auto"></audio>
+
+  <p id="musicStatus" style="font-size:12px;margin-top:15px;"></p>
+
+</main>
+
+<footer>
+  Made with ♡ by Adriean
+</footer>
+
+<script>
+function bukaDiary() {
+  document.getElementById("diary").style.display = "block";
+  document.getElementById("openButton").style.display = "none";
+
+  const lagu = document.getElementById("mySong");
+  const status = document.getElementById("musicStatus");
+
+  lagu.play()
+    .then(() => {
+      status.textContent = "♫ Playing our song ♡";
+    })
+    .catch(() => {
+      status.textContent =
+        "Tekan sekali lagi jika lagu belum dimainkan.";
+    });
+}
+
+function tutupDiary() {
+  document.getElementById("diary").style.display = "none";
+  document.getElementById("openButton").style.display = "inline-block";
+}
+
+for (let i = 0; i < 15; i++) {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = "♥";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDelay = Math.random() * 7 + "s";
+  heart.style.fontSize = (12 + Math.random() * 20) + "px";
+  document.body.appendChild(heart);
+}
 </script>
+
 </body>
 </html>
